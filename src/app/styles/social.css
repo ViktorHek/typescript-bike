@@ -1,0 +1,49 @@
+.main-social-conatiner {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.social-header {
+  height: 80px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.social-header > span {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.event-list-container {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.event-container {
+  width: 30%;
+  height: 150px;
+  background-color: grey;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.event-info-container {
+  height: 30%;
+  font-size: 13px;
+  margin: 15px 0px;
+}

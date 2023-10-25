@@ -1,0 +1,100 @@
+.main-bike-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.header-container {
+  height: 27%;
+  width: 100%;
+  background: linear-gradient(79.06deg, #c5b6f1 -60.55%, #cdf7d7 41.01%, #b2f100 116.38%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.type-selector-container {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-type-selector-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: 90%;
+  height: 100%;
+  overflow-x: scroll;
+}
+
+.header-img-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-img-container > img {
+  height: 100%;
+  width: 100%;
+}
+
+.header-text-container {
+  height: 50%;
+  margin-left: 15px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.header-text-container > p {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23.44px;
+  color: #04444d;
+}
+
+.header-text-container > h1 {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+  color: #04444d;
+}
+
+.bike-card-container {
+  width: 100%;
+  height: 58%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.inner-bike-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  overflow-y: scroll;
+  background: rgba(197, 182, 241, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}

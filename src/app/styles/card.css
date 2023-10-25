@@ -1,0 +1,195 @@
+.main-card-conatiner {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-header {
+  height: 35%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-inner-header {
+  background: linear-gradient(79.06deg, #c5b6f1 -60.55%, #cdf7d7 41.01%, #b2f100 116.38%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-inner-header > span {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: rgba(4, 68, 77, 1);
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.card-inner-header > div {
+  position: absolute;
+  border-radius: 50%;
+  top: 20px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-inner-header > div > img {
+  width: 100%;
+  height: 100%;
+}
+
+.dummy-card-img-container {
+  width: 260px;
+  height: 166px;
+  border: 10px;
+  position: absolute;
+  bottom: -70px;
+}
+
+.dummy-card-img-container > img {
+  max-width: 100%;
+}
+
+.refill-button-container {
+  height: 48px;
+  width: 260px;
+}
+
+.card-bottom-container {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-cal-title {
+  font-family: "Raleway", sans-serif;
+  color: #04444d;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.card-calender-container {
+  height: 20%;
+  width: 80%;
+  /* background-color: whitesmoke; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-calender-container > span {
+  font-family: "Varela Round", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.card-price-container {
+  height: 40px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.card-price-container > span {
+  font-family: "Varela Round", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.card-buttons-container {
+  height: 46px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.card-button-container {
+  height: 100%;
+  width: 40%;
+}
+
+.confirmaion-container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.confirmaion-container > img {
+  height: 100%;
+  width: 100%;
+}
+
+.confirmation-box {
+  position: absolute;
+  width: 325px;
+  height: 165px;
+  background: linear-gradient(79.06deg, #c5b6f1 -60.55%, #cdf7d7 41.01%, #b2f100 116.38%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-box > span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 25px;
+  width: 25px;
+  background-color: rgba(4, 68, 77, 1);
+  color: rgba(186, 236, 82, 1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+
+.confirmation-box > p {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 29px;
+
+  color: #04444d;
+}

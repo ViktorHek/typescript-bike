@@ -1,0 +1,217 @@
+.main-account-conatiner {
+  height: 100%;
+  width: 100%;
+  /* position: relative; */
+}
+
+.account-header-stats-container {
+  height: 30vh;
+  position: relative;
+}
+
+.account-header-conatiner {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(79.06deg, #c5b6f1 -60.55%, #cdf7d7 41.01%, #b2f100 116.38%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  align-items: center;
+  padding: 0px 20px;
+  position: relative;
+}
+
+.account-header-conatiner > span {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.account-header-img-conatiner {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.account-header-img-conatiner > img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.account-stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 180px;
+  padding: 30px;
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+}
+
+.account-outer-stat-container {
+  max-width: 33%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding-top: 15px;
+}
+
+.account-stats-icon-container {
+  height: 50px;
+  width: 50px;
+  background: rgba(197, 182, 241, 1);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -15px;
+}
+
+.account-inner-stat-container {
+  border: 1px solid black;
+  height: 120px;
+  width: 90px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(245, 255, 241);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.account-inner-stat-container > span {
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.account-inner-stat-container > p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.explore-button {
+  width: 80%;
+  height: 30px;
+  border-radius: 20px;
+  margin: 50px 10%;
+  background-color: grey;
+}
+
+.account-activity-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-activity-container > span {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.account-activity-diagram-container {
+  height: 200px;
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(246, 246, 246, 1);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 10px 5px;
+}
+
+.account-activity-diagram-container > span {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.main-gifts-display-container {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  background-color: #faebd8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gifts-circle-container {
+  height: 40%;
+  width: 100%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-circle {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+}
+
+.open-gift-button {
+  width: 80%;
+  height: 30px;
+  border-radius: 20px;
+  margin: 20px 0px;
+}
+
+.gifts-list-container {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 100%;
+}
+
+.gifts-list-container > span {
+  margin: 20px;
+}
+
+.gifts-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.gift-container {
+  width: 35%;
+  height: 35%;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin: 5%;
+}
