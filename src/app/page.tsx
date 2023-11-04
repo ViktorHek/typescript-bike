@@ -49,21 +49,13 @@ export default function Login() {
     let result = await axios.put("http://localhost:3001/register", { payload });
     console.log({result})
     if (result.status === 200) {
+      localStorage.setItem('user', name)
       window.location.assign("http://localhost:3000/bikes")
       // setOpenRegister(!openRegister);
     }
   };
 
   const handleSubmitLogin = async () => {
-    // if (name === "striker biker" && password === "pass") {
-    //   // navigate("/bike");
-    //   console.log('nev', window.location)
-    //   console.log('navigate bike')
-    //   return;
-    // } else {
-    //   alert("invalit")
-    //   return;
-    // }
     if (!name || !password) {
       alert("missing something");
       return;
@@ -73,8 +65,8 @@ export default function Login() {
       password: password,
     };
     let result = await axios.post("http://localhost:3001/login", { payload });
-    console.log('red, ', result)
     if (result.data.userName) {
+      localStorage.setItem('user', name)
       window.location.assign("http://localhost:3000/bikes")
     } else {
       alert(result.data);

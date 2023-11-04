@@ -6,9 +6,14 @@ import axios from "axios"
 import User from "./userInterface"
 import Button from "../components/Button"
 import Nav from "../components/nav"
+import Bike from "../bikes/bikeInterface"
+import Card from "../components/Card";
+import "../styles/bike.css";
 
 export default function Account() {
   const [displayGifts, setDisplayGifts] = useState(false);
+  // let bikes: any[] = []
+  const [bikes, setBikes] = useState([])
   const [user, setUser] = useState<null | {
     id: number,
     userName: string,
@@ -30,14 +35,22 @@ export default function Account() {
   }, [])
 
   const populateUser = async () => {
-    let responce = await axios.get("http://localhost:3001/user");
-    let user: User = responce.data;
+    let payload = localStorage.getItem("user") ? localStorage.getItem("user") : "Anna Andarsson"
+    let responce = await axios.put("http://localhost:3001/userhistory", { userName: payload });
+    console.log({ responce })
+    let user: User = responce.data.user;
+    setBikes(responce.data.history);
     setUser(user);
+    console.log('bikes', bikes)
   };
 
   function handleExploreGift() {
-    console.log("handleExploreGift")
-    // setDisplayGifts(!displayGifts);
+    console.log("handleExploreGift", bikes)
+    setDisplayGifts(!displayGifts);
+  }
+
+  function handleCardClick() {
+    console.log('clicking bike')
   }
 
   const circleImg =
@@ -49,22 +62,14 @@ export default function Account() {
     <div className="main-account-conatiner">
       {displayGifts && (
         <div className="main-gifts-display-container">
-          <div className="gifts-circle-container">
-            <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={circleImg} alt="circle" style={{ maxHeight: '100%', maxWidth: '100%' }} />
-            </div>
-          </div>
-          <button className="open-gift-button">Open up a gift</button>
-          <div className="gifts-list-container">
-            <span>Available Gifts</span>
-            <div className="gifts-list">
-              {giftsList.map((el) => {
-                return (
-                  <div className="gift-container">
-                    <span>{el}</span>
-                  </div>
-                );
-              })}
+          <div className="close-history"><span onClick={() => setDisplayGifts(!displayGifts)}>X</span></div>
+          <div className="history-title"><span>History</span></div>
+          <div className="bike-card-container">
+            <div className="inner-bike-card-container">
+              {bikes.length &&
+                bikes.map((el: Bike, index) => {
+                  return <Card bike={el} key={index} handleClick={handleCardClick} />;
+                })}
             </div>
           </div>
         </div>
@@ -113,7 +118,7 @@ export default function Account() {
         </div>}
 
       <div className="explore-button">
-        <Button type={"primary"} color={"primary"} text={"Explore gifts"} handleClick={() => handleExploreGift()} />
+        <Button type={"primary"} color={"primary"} text={"History"} handleClick={() => handleExploreGift()} />
       </div>
       <div className="account-activity-container">
         <span>Activity</span>
