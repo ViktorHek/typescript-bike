@@ -9,8 +9,10 @@ import Bike from "./bikeInterface"
 import Nav from '../components/nav'
 
 export default function Bikes() {
+  let allBikes: [] = [] 
   const [bikePreView, setBikePreView] = useState(null);
-  const [bikes, setBikes] = useState([]);
+  const [bikes, setBikes] = useState<any[]>([]);
+  const [filter, setFilter] = useState<string[]>([]);
   const [categorys, setCategorys] = useState([]);
 
   const global = {
@@ -31,6 +33,7 @@ export default function Bikes() {
   const populateBikes = async () => {
     let responce = await axios.get("http://localhost:3001/bikes/all");
     let bikes = responce.data;
+    allBikes = bikes
     setBikes(bikes);
     let categorys = bikes.map((el: Bike) => {
       return el.category;
@@ -52,8 +55,21 @@ export default function Bikes() {
   }
 
   function handleChipClick(text: string) {
-    console.log(text)
-    return;
+    let arr: string[] = []
+    let newArr: any[] = []
+    if(filter.includes(text)) {
+      filter.forEach((el) => {
+        if(el !== text) arr.push(el)
+      })
+    } else {
+      arr.push(text)
+    }
+    arr.push(text)
+    setFilter(arr)
+    bikes.forEach((el: Bike) => {
+      if(arr.includes(el.category)) newArr.push(el)
+    })
+    setBikes(newArr)
   }
 
   const arr = ['rere', 'erwrew']
