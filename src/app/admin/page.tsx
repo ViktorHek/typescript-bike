@@ -73,6 +73,7 @@ export default function Account() {
     bikes.forEach((el: BikeInterface) => {
       if(el.id === val) bike = el
     })
+    localStorage.setItem("bike", JSON.stringify(bike))
     setHandle(bike.handle)
     setProductType(bike.productType)
     setVendor(bike.vendor)
