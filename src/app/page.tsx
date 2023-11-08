@@ -47,11 +47,9 @@ export default function Login() {
       password: password,
     };
     let result = await axios.put("http://localhost:3001/register", { payload });
-    console.log({result})
     if (result.status === 200) {
       localStorage.setItem('user', name)
-      window.location.assign("http://localhost:3000/bikes")
-      // setOpenRegister(!openRegister);
+      window.location.assign("http://localhost:3000/bikes")      
     }
   };
 
@@ -67,7 +65,11 @@ export default function Login() {
     let result = await axios.post("http://localhost:3001/login", { payload });
     if (result.data.userName) {
       localStorage.setItem('user', name)
-      window.location.assign("http://localhost:3000/bikes")
+      if(result.data.admin) {
+        window.location.assign("http://localhost:3000/admin")
+      } else {
+        window.location.assign("http://localhost:3000/bikes")
+      }
     } else {
       alert(result.data);
     }

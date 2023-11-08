@@ -10,4 +10,5 @@ export default interface User {
   kilometers: number,
   rides: number,
   carbon: number,
+  admin: boolean
 }

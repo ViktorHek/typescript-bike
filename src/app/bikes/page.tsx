@@ -9,11 +9,11 @@ import Bike from "./bikeInterface"
 import Nav from '../components/nav'
 
 export default function Bikes() {
-  let allBikes: [] = [] 
   const [bikePreView, setBikePreView] = useState(null);
   const [bikes, setBikes] = useState<any[]>([]);
-  const [filter, setFilter] = useState<string[]>([]);
-  const [categorys, setCategorys] = useState([]);
+  const [allBikes, setAllBikes] = useState<any[]>([]);
+  const [categorys, setCategorys] = useState<string[]>([]);
+  const [filter, setFilter] = useState<string>("");
 
   const global = {
     testUser: {
@@ -33,7 +33,8 @@ export default function Bikes() {
   const populateBikes = async () => {
     let responce = await axios.get("http://localhost:3001/bikes/all");
     let bikes = responce.data;
-    allBikes = bikes
+    setAllBikes(bikes)
+    console.log({allBikes})
     setBikes(bikes);
     let categorys = bikes.map((el: Bike) => {
       return el.category;
@@ -55,42 +56,31 @@ export default function Bikes() {
   }
 
   function handleChipClick(text: string) {
-    let arr: string[] = []
-    let newArr: any[] = []
-    if(filter.includes(text)) {
-      filter.forEach((el) => {
-        if(el !== text) arr.push(el)
-      })
+    if(filter === text) {
+      setBikes(allBikes)
+      setFilter("")
     } else {
-      arr.push(text)
+      let bikes = allBikes.filter((el) => el.category === text)
+      setBikes(bikes)
+      setFilter(text)
     }
-    arr.push(text)
-    setFilter(arr)
-    bikes.forEach((el: Bike) => {
-      if(arr.includes(el.category)) newArr.push(el)
-    })
-    setBikes(newArr)
   }
-
-  const arr = ['rere', 'erwrew']
 
   return (
     <div className="main-bike-container">
       <div className="header-container">
         <div className="header-text-container">
-          <p>Hello {global.testUser.name}</p>
+          <p>Hello {localStorage.getItem("user") ? localStorage.getItem("user") : "Dear Customer"}</p>
           <h1>Choose your bike</h1>
         </div>
-
-
         <div className="header-img-container">
           <img src={global.testUser.imgUrl} alt="profilePic" />
         </div>
         <div className="type-selector-container">
           <div className="inner-type-selector-container">
             {categorys.length &&
-              categorys.map((el: string) => {
-                return <Chip text={el} key={el} handleClick={(text: string) => handleChipClick(text)} />;
+              categorys.map((el: string, index: number) => {
+                return <Chip text={el} key={index} handleClick={(text: string) => handleChipClick(text)} />;
               })}
           </div>
         </div>
@@ -98,8 +88,8 @@ export default function Bikes() {
       <div className="bike-card-container">
         <div className="inner-bike-card-container">
           {bikes.length &&
-            bikes.map((el: Bike) => {
-              return <Card bike={el} key={el.id} handleClick={handleCardClick} />;
+            bikes.map((el: Bike, index: number) => {
+              return <Card bike={el} key={index} handleClick={handleCardClick} />;
             })}
         </div>
       </div>

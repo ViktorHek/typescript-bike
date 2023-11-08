@@ -8,7 +8,6 @@ interface props {
 }
 
 export default function Card(props: props) {
-  console.log({props})
   const { bike, handleClick } = props;
   const bikeImg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaFa5S5I_ZGML8N7JSAa3EJsm7yU4r8w3Gw&usqp=CAU";

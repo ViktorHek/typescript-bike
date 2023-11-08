@@ -40,7 +40,6 @@ export default function Card() {
     let user = localStorage.getItem("user")
     if(!bike || !user) return
     let responce = await axios.post("http://localhost:3001/buy", {userName: user, bike: bike.id});
-    console.log({responce})
     setDisplayConfimation(!displayConfimation)
     window.location.assign("http://localhost:3000/account")
   }

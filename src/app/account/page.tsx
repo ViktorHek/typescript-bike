@@ -53,16 +53,10 @@ export default function Account() {
     console.log('clicking bike')
   }
 
-  const circleImg =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_P2155vWFW_GvoIDyogabAwkcs7N1suKA0g&usqp=CAU";
-
-  const giftsList = ["Package", "Backpack", "Tour1", "Tour2", "Tour3"];
-
   return (
     <div className="main-account-conatiner">
       {displayGifts && (
-        <div className="main-gifts-display-container">
-          <div className="close-history"><span onClick={() => setDisplayGifts(!displayGifts)}>X</span></div>
+        <div className="main-gifts-display-container" onClick={() => setDisplayGifts(!displayGifts)}>
           <div className="history-title"><span>History</span></div>
           <div className="bike-card-container">
             <div className="inner-bike-card-container">
