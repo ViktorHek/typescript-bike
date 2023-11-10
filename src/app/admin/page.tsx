@@ -6,7 +6,6 @@ import Nav from "../components/nav"
 import "../styles/admin.css"
 import "../styles/account.css"
 import "../styles/bike.css"
-import { FormEvent } from "react";
 import Bike from "../bikes/bike"
 import BikeInterface from "../bikes/bikeInterface"
 import Card from "../components/Card";
@@ -90,18 +89,23 @@ export default function Account() {
   }
 
   function handleEdit() {
+    let lsBike: any = localStorage.getItem("bike")
+    console.log("lsBike: ",lsBike)
+    if(lsBike) {
+      lsBike = JSON.parse(lsBike)
+    }
     let payload = {
       handle: handle,
       productType: productType,
-      created: "2022-10-08T19:53:43.831Z",
-      createdAt: new Date(),
+      created: lsBike.created,
+      createdAt: lsBike.createdAt,
       vendor: vendor,
-      updated: "2022-10-08T19:53:43.831Z",
+      updated: new Date(),
       totalInventory: inventory,
       availableForSale: available,
       priceRange: price,
       description: description,
-      id: JSON.stringify(Math.random()),
+      id: lsBike.id,
       title: title,
       imgUrl: img,
       category: category,
@@ -133,12 +137,13 @@ export default function Account() {
               <input type="text" name="handle" value={handle} placeholder="handle" onChange={(event) => setHandle(event.target.value)} />
               <input type="text" name="type" value={productType} placeholder="type" onChange={(event) => setProductType(event.target.value)} />
               <input type="text" name="vendor" value={vendor} placeholder="vendor" onChange={(event) => setVendor(event.target.value)} />
-              <input type="number" name="inventory" value={inventory === "0" ? "inventory" : inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
+              <input type="number" name="inventory" value={inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
+              {/* <input type="number" name="inventory" value={inventory === "0" ? "inventory" : inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} /> */}
               <div className="add-available-checkbox">
                 <span>Available</span>
                 <input type="checkbox" checked={available} name="available" onChange={() => setAvailable(!available)} />
               </div>
-              <input type="number" name="price" value={price === "0" ? "price" : price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
+              <input type="number" name="price" value={price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
               <input type="text" name="description" value={description} placeholder="description" onChange={(event) => setDescription(event.target.value)} />
               <input type="text" name="title" value={title} placeholder="title" onChange={(event) => setTitle(event.target.value)} />
               <input type="text" name="category" value={category} placeholder="category" onChange={(event) => setCategory(event.target.value)} />
@@ -175,12 +180,12 @@ export default function Account() {
             <input type="text" name="handle" value={handle} placeholder="handle" onChange={(event) => setHandle(event.target.value)} />
             <input type="text" name="type" value={productType} placeholder="type" onChange={(event) => setProductType(event.target.value)} />
             <input type="text" name="vendor" value={vendor} placeholder="vendor" onChange={(event) => setVendor(event.target.value)} />
-            <input type="number" name="inventory" value={inventory === "0" ? "inventory" : inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
+            <input type="number" name="inventory" value={inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
             <div className="add-available-checkbox">
               <span>Available</span>
               <input type="checkbox" checked={available} name="available" onChange={() => setAvailable(!available)} />
             </div>
-            <input type="number" name="price" value={price === "0" ? "price" : price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
+            <input type="number" name="price" value={price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
             <input type="text" name="description" value={description} placeholder="description" onChange={(event) => setDescription(event.target.value)} />
             <input type="text" name="title" value={title} placeholder="title" onChange={(event) => setTitle(event.target.value)} />
             <input type="text" name="category" value={category} placeholder="category" onChange={(event) => setCategory(event.target.value)} />
