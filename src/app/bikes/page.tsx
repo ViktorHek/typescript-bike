@@ -68,6 +68,7 @@ export default function Bikes() {
 
   return (
     <div className="main-bike-container">
+      {bikePreView ? <div className="bike-preview-exit-button" onClick={() => setBikePreView(null)}><span>X</span></div>:null}
       <div className="header-container">
         <div className="header-text-container">
           <p>Hello {localStorage.getItem("user") ? localStorage.getItem("user") : "Dear Customer"}</p>

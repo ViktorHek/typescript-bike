@@ -9,7 +9,7 @@ interface props {
 }
 
 export default function BikePreView(props: props) {
-  const {bike, handleClick} = props
+  const { bike, handleClick } = props
   const {
     availableForSale,
     category,
@@ -65,7 +65,7 @@ export default function BikePreView(props: props) {
             <p>{description}</p>
           </div> */}
           <div className="preview-button-container">
-            <Button text={"Rent Now"} handleClick={selectBike} color="" type=""/>
+            <Button text={"Rent Now"} handleClick={selectBike} color="" type="" />
           </div>
         </div>
       </div>
