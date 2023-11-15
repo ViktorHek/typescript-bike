@@ -63,14 +63,14 @@ export default function Account() {
       category: category,
     }
     console.log({ payload })
-    let responce = axios.post("http://localhost:3001/add", {payload})
+    let responce = axios.post("http://localhost:3001/add", { payload })
     console.log({ responce })
   }
 
   function handleCardClick(val: any) {
     let bike: any = {}
     bikes.forEach((el: BikeInterface) => {
-      if(el.id === val) bike = el
+      if (el.id === val) bike = el
     })
     localStorage.setItem("bike", JSON.stringify(bike))
     setHandle(bike.handle)
@@ -88,10 +88,10 @@ export default function Account() {
 
   }
 
-  function handleEdit() {
+  const handleEdit = async () => {
     let lsBike: any = localStorage.getItem("bike")
-    console.log("lsBike: ",lsBike)
-    if(lsBike) {
+    console.log("lsBike: ", lsBike)
+    if (lsBike) {
       lsBike = JSON.parse(lsBike)
     }
     let payload = {
@@ -110,23 +110,35 @@ export default function Account() {
       imgUrl: img,
       category: category,
     }
-    console.log({payload})
-    let responce = axios.put("http://localhost:3001/edit", {payload})
+    console.log({ payload })
+    let responce = axios.put("http://localhost:3001/edit", { payload })
     console.log({ responce })
-    if(edit) setEdit(!edit)
-    if(editBike) setEditBike(!editBike)
+    if (edit) setEdit(!edit)
+    if (editBike) setEditBike(!editBike)
   }
 
   function handleInvantory(val: any) {
-    console.log("eeee: ",val)
+    console.log("eeee: ", val)
     // setInventory(JSON.parse(event.target.value) ? JSON.parse(event.target.value) : 1)
   }
 
   function handlePrice(val: any) {
-    console.log("eeee: ",val)
+    console.log("eeee: ", val)
     // setInventory(JSON.parse(event.target.value) ? JSON.parse(event.target.value) : 1)
   }
 
+  const handleDelete = async () => {
+    let lsBike: any = localStorage.getItem("bike")
+    console.log("lsBike: ", lsBike)
+    if (lsBike) {
+      lsBike = JSON.parse(lsBike).id
+    } else {
+      alert("something wrong")
+      return
+    }
+    let responce = axios.delete("http://localhost:3001/delete?id=" + lsBike)
+    console.log({responce})
+  }
 
   return (
     <div className="main-admin-conatiner">
@@ -163,7 +175,7 @@ export default function Account() {
       {edit &&
         <div className="main-edit-container">
           <span className="edit-cancle-button" onClick={() => setEdit(!edit)}>Cancle</span>
-          <div className="bike-card-container" style={{height: "80%"}}>
+          <div className="bike-card-container" style={{ height: "80%" }}>
             <div className="inner-bike-card-container">
               {bikes.length &&
                 bikes.map((el: Bike) => {
@@ -173,34 +185,35 @@ export default function Account() {
           </div>
         </div>
       }
-      {editBike && 
+      {editBike &&
         <div className="main-edit-bike-container">
-        <div className="inner-edit-bike-container">
-          <div className="add-list">
-            <input type="text" name="handle" value={handle} placeholder="handle" onChange={(event) => setHandle(event.target.value)} />
-            <input type="text" name="type" value={productType} placeholder="type" onChange={(event) => setProductType(event.target.value)} />
-            <input type="text" name="vendor" value={vendor} placeholder="vendor" onChange={(event) => setVendor(event.target.value)} />
-            <input type="number" name="inventory" value={inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
-            <div className="add-available-checkbox">
-              <span>Available</span>
-              <input type="checkbox" checked={available} name="available" onChange={() => setAvailable(!available)} />
-            </div>
-            <input type="number" name="price" value={price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
-            <input type="text" name="description" value={description} placeholder="description" onChange={(event) => setDescription(event.target.value)} />
-            <input type="text" name="title" value={title} placeholder="title" onChange={(event) => setTitle(event.target.value)} />
-            <input type="text" name="category" value={category} placeholder="category" onChange={(event) => setCategory(event.target.value)} />
-            <input type="text" name="img" value={img} placeholder="Img Url" onChange={(event) => setImg(event.target.value)} />
-            <div className="add-button-container">
-              <div>
-                <Button handleClick={() => setEditBike(!editBike)} text="Cancle" type="primary" color="null" />
+          <div className="inner-edit-bike-container">
+            <div className="edit-bike-close-button" onClick={() => setEditBike(!editBike)}><span>X</span></div>
+            <div className="add-list">
+              <input type="text" name="handle" value={handle} placeholder="handle" onChange={(event) => setHandle(event.target.value)} />
+              <input type="text" name="type" value={productType} placeholder="type" onChange={(event) => setProductType(event.target.value)} />
+              <input type="text" name="vendor" value={vendor} placeholder="vendor" onChange={(event) => setVendor(event.target.value)} />
+              <input type="number" name="inventory" value={inventory} placeholder="inventory" onChange={(event) => setInventory(event.target.value)} />
+              <div className="add-available-checkbox">
+                <span>Available</span>
+                <input type="checkbox" checked={available} name="available" onChange={() => setAvailable(!available)} />
               </div>
-              <div>
-                <Button handleClick={handleEdit} text="Submit" type="primary" color="null" />
+              <input type="number" name="price" value={price} placeholder="price" onChange={(event) => setPrice(event.target.value)} />
+              <input type="text" name="description" value={description} placeholder="description" onChange={(event) => setDescription(event.target.value)} />
+              <input type="text" name="title" value={title} placeholder="title" onChange={(event) => setTitle(event.target.value)} />
+              <input type="text" name="category" value={category} placeholder="category" onChange={(event) => setCategory(event.target.value)} />
+              <input type="text" name="img" value={img} placeholder="Img Url" onChange={(event) => setImg(event.target.value)} />
+              <div className="add-button-container">
+                <div>
+                  <Button handleClick={handleDelete} text="Delete" type="primary" color="null" />
+                </div>
+                <div>
+                  <Button handleClick={handleEdit} text="Submit" type="primary" color="null" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>      }
+        </div>}
       <div className="account-header-stats-container">
         <div className="account-header-conatiner">
           <span>Admin Page</span>
