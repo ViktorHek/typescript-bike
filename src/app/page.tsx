@@ -99,7 +99,7 @@ export default function Login() {
         <img src="/home-bg.png" alt="sorry :(" className="home-backgrond-img" />
         {!openRegister && !openLogin ? (
           <>
-            <span className="home-wellcome-text" onClick={() => console.log('navigate bike')}>
+            <span className="home-wellcome-text">
               Wellcome Biker!
             </span>
             <div className="home-button-container">

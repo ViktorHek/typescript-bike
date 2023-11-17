@@ -34,7 +34,6 @@ export default function Bikes() {
     let responce = await axios.get("http://localhost:3001/bikes/all");
     let bikes = responce.data;
     setAllBikes(bikes)
-    console.log({allBikes})
     setBikes(bikes);
     let categorys = bikes.map((el: Bike) => {
       return el.category;
@@ -74,7 +73,7 @@ export default function Bikes() {
           <p>Hello {localStorage.getItem("user") ? localStorage.getItem("user") : "Dear Customer"}</p>
           <h1>Choose your bike</h1>
         </div>
-        <div className="header-img-container">
+        <div className="header-img-container" onClick={() => window.location.assign("http://localhost:3000")}>
           <img src={global.testUser.imgUrl} alt="profilePic" />
         </div>
         <div className="type-selector-container">

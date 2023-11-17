@@ -62,9 +62,7 @@ export default function Account() {
       imgUrl: img,
       category: category,
     }
-    console.log({ payload })
     let responce = axios.post("http://localhost:3001/add", { payload })
-    console.log({ responce })
   }
 
   function handleCardClick(val: any) {
@@ -83,14 +81,12 @@ export default function Account() {
     setTitle(bike.title)
     setImg(bike.imgUrl)
     setCategory(bike.category)
-    console.log('card-click', bike)
     setEditBike(!editBike)
 
   }
 
   const handleEdit = async () => {
     let lsBike: any = localStorage.getItem("bike")
-    console.log("lsBike: ", lsBike)
     if (lsBike) {
       lsBike = JSON.parse(lsBike)
     }
@@ -110,26 +106,13 @@ export default function Account() {
       imgUrl: img,
       category: category,
     }
-    console.log({ payload })
     let responce = axios.put("http://localhost:3001/edit", { payload })
-    console.log({ responce })
     if (edit) setEdit(!edit)
     if (editBike) setEditBike(!editBike)
   }
 
-  function handleInvantory(val: any) {
-    console.log("eeee: ", val)
-    // setInventory(JSON.parse(event.target.value) ? JSON.parse(event.target.value) : 1)
-  }
-
-  function handlePrice(val: any) {
-    console.log("eeee: ", val)
-    // setInventory(JSON.parse(event.target.value) ? JSON.parse(event.target.value) : 1)
-  }
-
   const handleDelete = async () => {
     let lsBike: any = localStorage.getItem("bike")
-    console.log("lsBike: ", lsBike)
     if (lsBike) {
       lsBike = JSON.parse(lsBike).id
     } else {
@@ -137,7 +120,6 @@ export default function Account() {
       return
     }
     let responce = axios.delete("http://localhost:3001/delete?id=" + lsBike)
-    console.log({responce})
   }
 
   return (
@@ -217,7 +199,7 @@ export default function Account() {
       <div className="account-header-stats-container">
         <div className="account-header-conatiner">
           <span>Admin Page</span>
-          <div className="account-header-img-conatiner">
+          <div className="account-header-img-conatiner" onClick={() => window.location.assign("http://localhost:3000")}>
             <img
               src={imgUrl}
               alt="profile"

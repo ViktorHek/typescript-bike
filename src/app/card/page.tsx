@@ -58,7 +58,7 @@ export default function Card() {
       <div className="card-header">
         <div className="card-inner-header">
           <span>Payment</span>
-          <div>{user && <img src={user.imgUrl} alt="profile" />}</div>
+          <div onClick={() => window.location.assign("http://localhost:3000")}>{user && <img src={user.imgUrl} alt="profile" />}</div>
         </div>
         <div className="dummy-card-img-container center">
           <img src="/BikeCard.png" alt="sorry :(" />

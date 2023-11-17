@@ -37,20 +37,17 @@ export default function Account() {
   const populateUser = async () => {
     let payload = localStorage.getItem("user") ? localStorage.getItem("user") : "Anna Andarsson"
     let responce = await axios.put("http://localhost:3001/userhistory", { userName: payload });
-    console.log({ responce })
     let user: User = responce.data.user;
     setBikes(responce.data.history);
     setUser(user);
-    console.log('bikes', bikes)
   };
 
   function handleExploreGift() {
-    console.log("handleExploreGift", bikes)
     setDisplayGifts(!displayGifts);
   }
 
   function handleCardClick() {
-    console.log('clicking bike')
+    return;
   }
 
   return (
@@ -72,7 +69,7 @@ export default function Account() {
         <div className="account-header-stats-container">
           <div className="account-header-conatiner">
             <span>Hi, {user.userName}!</span>
-            <div className="account-header-img-conatiner">
+            <div className="account-header-img-conatiner" onClick={() => window.location.assign("http://localhost:3000")}>
               <img
                 src={user ? user.imgUrl : backupImg}
                 alt="profile"
