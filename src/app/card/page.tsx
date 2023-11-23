@@ -22,7 +22,7 @@ export default function Card() {
   }, []);
 
   const populateUser = async () => {
-    let responce = await axios.get("http://localhost:3001/user");
+    let responce = await axios.get("https://shy-rose-goldfish-wrap.cyclic.app/user");
     let user = responce.data;
     setUser(user);
   };
@@ -39,7 +39,7 @@ export default function Card() {
     let bike = JSON.parse(localStorage.getItem("bike") || '{}')
     let user = localStorage.getItem("user")
     if(!bike || !user) return
-    let responce = await axios.post("http://localhost:3001/buy", {userName: user, bike: bike.id});
+    let responce = await axios.post("https://shy-rose-goldfish-wrap.cyclic.app/buy", {userName: user, bike: bike.id});
     setDisplayConfimation(!displayConfimation)
     window.location.assign("http://localhost:3000/account")
   }

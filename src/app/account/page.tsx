@@ -36,7 +36,7 @@ export default function Account() {
 
   const populateUser = async () => {
     let payload = localStorage.getItem("user") ? localStorage.getItem("user") : "Anna Andarsson"
-    let responce = await axios.put("http://localhost:3001/userhistory", { userName: payload });
+    let responce = await axios.put("https://shy-rose-goldfish-wrap.cyclic.app/userhistory", { userName: payload });
     let user: User = responce.data.user;
     setBikes(responce.data.history);
     setUser(user);

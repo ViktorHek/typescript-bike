@@ -31,7 +31,7 @@ export default function Bikes() {
   }, []);
 
   const populateBikes = async () => {
-    let responce = await axios.get("http://localhost:3001/bikes/all");
+    let responce = await axios.get("https://shy-rose-goldfish-wrap.cyclic.app/bikes/all");
     let bikes = responce.data;
     setAllBikes(bikes)
     setBikes(bikes);
@@ -70,7 +70,7 @@ export default function Bikes() {
       {bikePreView ? <div className="bike-preview-exit-button" onClick={() => setBikePreView(null)}><span>X</span></div>:null}
       <div className="header-container">
         <div className="header-text-container">
-          <p>Hello {localStorage.getItem("user") ? localStorage.getItem("user") : "Dear Customer"}</p>
+          <p>Hello Dear Customer</p>
           <h1>Choose your bike</h1>
         </div>
         <div className="header-img-container" onClick={() => window.location.assign("http://localhost:3000")}>

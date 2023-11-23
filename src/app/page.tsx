@@ -46,7 +46,7 @@ export default function Login() {
       userName: name,
       password: password,
     };
-    let result = await axios.put("http://localhost:3001/register", { payload });
+    let result = await axios.put("https://shy-rose-goldfish-wrap.cyclic.app/register", { payload });
     if (result.status === 200) {
       localStorage.setItem('user', name)
       window.location.assign("http://localhost:3000/bikes")      
@@ -62,7 +62,7 @@ export default function Login() {
       userName: name,
       password: password,
     };
-    let result = await axios.post("http://localhost:3001/login", { payload });
+    let result = await axios.post("https://shy-rose-goldfish-wrap.cyclic.app/login", { payload });
     if (result.data.userName) {
       localStorage.setItem('user', name)
       if(result.data.admin) {

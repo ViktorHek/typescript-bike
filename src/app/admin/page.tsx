@@ -37,7 +37,7 @@ export default function Account() {
   }, []);
 
   const populateBikes = async () => {
-    let responce = await axios.get("http://localhost:3001/bikes/all");
+    let responce = await axios.get("https://shy-rose-goldfish-wrap.cyclic.app/bikes/all");
     setBikes(responce.data)
   };
 
@@ -62,7 +62,7 @@ export default function Account() {
       imgUrl: img,
       category: category,
     }
-    let responce = axios.post("http://localhost:3001/add", { payload })
+    let responce = axios.post("https://shy-rose-goldfish-wrap.cyclic.app/add", { payload })
   }
 
   function handleCardClick(val: any) {
@@ -106,7 +106,7 @@ export default function Account() {
       imgUrl: img,
       category: category,
     }
-    let responce = axios.put("http://localhost:3001/edit", { payload })
+    let responce = axios.put("https://shy-rose-goldfish-wrap.cyclic.app/edit", { payload })
     if (edit) setEdit(!edit)
     if (editBike) setEditBike(!editBike)
   }
@@ -119,7 +119,7 @@ export default function Account() {
       alert("something wrong")
       return
     }
-    let responce = axios.delete("http://localhost:3001/delete?id=" + lsBike)
+    let responce = axios.delete("https://shy-rose-goldfish-wrap.cyclic.app/delete?id=" + lsBike)
   }
 
   return (
